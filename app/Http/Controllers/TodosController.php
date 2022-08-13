@@ -27,4 +27,11 @@ class TodosController extends Controller {
             ->route('todos')
             ->with('success', 'Tarea creada correctamente');
     }
+
+    public function index() {
+        $todos = Todo::all();
+        return view('todos.index', [
+            'todos' => $todos
+        ]);
+    }
 }

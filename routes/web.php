@@ -27,4 +27,4 @@ Route::get('/tareas/{id}', [TodosController::class, 'show'])->name('todos-edit')
 Route::patch('/tareas/{id}', [TodosController::class, 'update'])->name('todos-update');
 Route::delete('/tareas/{id}', [TodosController::class, 'destroy'])->name('todos-destroy');
 
-Route::resource('categorias', CategoriesController::class);
+Route::resource('categories', CategoriesController::class);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 
@@ -18,9 +19,9 @@ class TodosController extends Controller {
         $request->validate([
             'title' => 'required|min:3'
         ]);
-
         $todo = new Todo();
         $todo->title = $request->title;
+        $todo->category_id = $request->category_id;
         $todo->save();
 
         return redirect()
@@ -30,8 +31,10 @@ class TodosController extends Controller {
 
     public function index() {
         $todos = Todo::all();
+        $categories = Category::all();
         return view('todos.index', [
-            'todos' => $todos
+            'todos' => $todos,
+            'categories' => $categories
         ]);
     }
 

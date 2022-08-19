@@ -42,8 +42,8 @@ class CategoriesController extends Controller {
         $category->save();
 
         return redirect()
-            ->route('categorias.index')
-            ->with('success', 'Nueva Categoría');
+            ->route('categories.index')
+            ->with('success', 'Nueva categoría creada!');
     }
 
     /**
@@ -54,7 +54,7 @@ class CategoriesController extends Controller {
      */
     public function show($id) {
         $category = Category::find($id);
-        return view('categorias.show', ['category' => $category]);
+        return view('categories.show', ['category' => $category]);
     }
 
     /**
@@ -80,7 +80,7 @@ class CategoriesController extends Controller {
         $category->color = $request->color;
         $category->save();
         return redirect()
-            ->route('categorias.index')
+            ->route('categories.index')
             ->with('success', 'Categoría actualizada!');
     }
 
@@ -92,9 +92,12 @@ class CategoriesController extends Controller {
      */
     public function destroy($id) {
         $category = Category::find($id);
+        $category->todos()->each(function ($todo) {
+            $todo->delete();
+        });
         $category->delete();
         return redirect()
-            ->route('categorias.index')
+            ->route('categories.index')
             ->with('success', 'Categoría eiminada!');
     }
 }

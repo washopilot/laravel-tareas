@@ -23,7 +23,7 @@
                 @endforeach
             </select>
 
-            <button type="submit" class="btn btn-primary">Crear nueva tarea</button>
+            <button type="submit" class="btn btn-primary mt-3">Crear nueva tarea</button>
         </form>
 
         <div>

@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div class="container w-25 border p-4 mt-4">
+    <div class="container w-25 border p-4 my-4">
         <form action="{{ route('todos-update', ['id' => $todo->id]) }}" method="POST">
             @method('PATCH')
             @csrf
@@ -18,6 +18,5 @@
             </div>
             <button type="submit" class="btn btn-primary">Editar tarea</button>
         </form>
-
     </div>
 @endsection
